@@ -1,0 +1,15 @@
+{
+  "name": "grid-system",
+  "version": "1.0.0",
+  "description": "Grid system built in scss",
+  "main": "index.js",
+  "author": "Luigi Derson",
+  "license": "MIT",
+  "scripts": {
+    "dist": "node-sass scss/main.scss dist/grid-system.css",
+    "dist:grid": "node-sass grid/index.scss dist/grid.css"
+  },
+  "dependencies": {
+    "node-sass": "^5.0.0"
+  }
+}
