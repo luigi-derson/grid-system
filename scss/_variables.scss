@@ -1,53 +1,75 @@
-// desktop grid
-$grid-desktop-columns: 12;
-$grid-desktop-sideMargin: 80px;
-$grid-desktop-gutter: 40px;
-$grid-desktop-breakpoint: 1400px;
+$include-column-box-sizing: true !default;
 
-// tablet grid
-$grid-tablet-columns: 12;
-$grid-tablet-sideMargin: 60px;
-$grid-tablet-gutter: 30px;
-$grid-tablet-breakpoint: 1020px;
+$enable-grid-classes: true !default;
+$enable-negative-margins: false !default;
 
-// mobile grid
-$grid-mobile-columns: 4;
-$grid-mobile-sideMargin: 32px;
-$grid-mobile-gutter: 20px;
-$grid-mobile-breakpoint: 620px;
+// Prefix for :root CSS variables
 
-/*
-  grid wrapper %
-  100% - ((side-margin * 2 / max-width) * 100%)
-*/
+$variable-prefix: bs- !default;
 
-/*
-  gutter %
-  (gutter / (max-width - (side-margin * 2))) * 100%
-*/
+// Spacing
+//
+// Control the default styling of most Bootstrap elements by modifying these
+// variables. Mostly focused on spacing.
+// You can add more entries to the $spacers map, should you need more variation.
 
-$desk-grid-width: 100% -
-  (($grid-desktop-sideMargin * 2 / $grid-desktop-breakpoint) * 100%);
-$tab-grid-width: 100% -
-  (($grid-tablet-sideMargin * 2 / $grid-tablet-breakpoint) * 100%);
-$mob-grid-width: 100% -
-  (($grid-mobile-sideMargin * 2 / $grid-mobile-breakpoint) * 100%);
+$spacer: 1rem !default;
+$spacers: (
+  0: 0,
+  1: $spacer / 4,
+  2: $spacer / 2,
+  3: $spacer,
+  4: $spacer * 1.5,
+  5: $spacer * 3,
+) !default;
 
-$desk-gutter: (
-  (
-      $grid-desktop-gutter /
-        ($grid-desktop-breakpoint - ($grid-desktop-sideMargin * 2))
-    ) * 100%
-);
-$tab-gutter: (
-  (
-      $grid-tablet-gutter /
-        ($grid-tablet-breakpoint - ($grid-tablet-sideMargin * 2))
-    ) * 100%
-);
-$mob-gutter: (
-  (
-      $grid-mobile-gutter /
-        ($grid-mobile-breakpoint - ($grid-mobile-sideMargin * 2))
-    ) * 100%
-);
+$negative-spacers: if($enable-negative-margins, negativify-map($spacers), null) !default;
+
+// Grid breakpoints
+//
+// Define the minimum dimensions at which your layout will change,
+// adapting to different screen sizes, for use in media queries.
+
+// scss-docs-start grid-breakpoints
+$grid-breakpoints: (
+  xs: 0,
+  sm: 576px,
+  md: 768px,
+  lg: 992px,
+  xl: 1200px,
+  xxl: 1400px,
+) !default;
+// scss-docs-end grid-breakpoints
+
+@include _assert-ascending($grid-breakpoints, '$grid-breakpoints');
+@include _assert-starts-at-zero($grid-breakpoints, '$grid-breakpoints');
+
+// Grid containers
+//
+// Define the maximum width of `.container` for different screen sizes.
+
+// scss-docs-start container-max-widths
+$container-max-widths: (
+  sm: 540px,
+  md: 720px,
+  lg: 960px,
+  xl: 1140px,
+  xxl: 1320px,
+) !default;
+// scss-docs-end container-max-widths
+
+@include _assert-ascending($container-max-widths, '$container-max-widths');
+
+// Grid columns
+//
+// Set the number of columns and specify the width of the gutters.
+
+$grid-columns: 12 !default;
+$grid-gutter-width: 1.5rem !default;
+$grid-row-columns: 6 !default;
+
+$gutters: $spacers !default;
+
+// Container padding
+
+$container-padding-x: $grid-gutter-width / 2 !default;

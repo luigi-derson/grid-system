@@ -6,10 +6,14 @@
   "author": "Luigi Derson",
   "license": "MIT",
   "scripts": {
-    "dist": "node-sass scss/main.scss dist/grid-system.css",
-    "dist:grid": "node-sass grid/index.scss dist/grid.css"
+    "dev": "yarn css -w & live-server .",
+    "css": "node-sass scss/index.scss dist/grid.css",
+    "css:alt": "node-sass alt-grid/main.scss dist/alt-grid.css",
+    "css-lint": "stylelint \"**/*.{css,scss}\" --cache --cache-location .cache/.stylelintcache --rd"
   },
   "dependencies": {
-    "node-sass": "^5.0.0"
+    "node-sass": "^5.0.0",
+    "stylelint": "^13.8.0",
+    "stylelint-config-sass-guidelines": "^7.1.0"
   }
 }

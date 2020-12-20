@@ -1,22 +1,21 @@
-.grid {
-  @include grid-base($desk-grid-width);
-  @media screen and (max-width: $grid-tablet-breakpoint) {
-    width: $tab-grid-width;
-  }
-  @media screen and (max-width: $grid-mobile-breakpoint) {
-    width: $mob-grid-width;
-  }
-  &-0 {
-    @include grid-base(100%);
+// Row
+//
+// Rows contain your columns.
+
+@if $enable-grid-classes {
+  .row {
+    @include make-row();
+
+    > * {
+      @include make-col-ready();
+    }
   }
 }
 
-.col {
-  @include columns-loop(desk, $grid-desktop-columns, $desk-gutter);
-  @media screen and (max-width: $grid-tablet-breakpoint) {
-    @include columns-loop(tab, $grid-tablet-columns, $tab-gutter);
-  }
-  @media screen and (max-width: $grid-mobile-breakpoint) {
-    @include columns-loop(mob, $grid-mobile-columns, $mob-gutter);
-  }
+// Columns
+//
+// Common styles for small and large grid columns
+
+@if $enable-grid-classes {
+  @include make-grid-columns();
 }
