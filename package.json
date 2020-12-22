@@ -9,7 +9,7 @@
     "dev": "yarn css -w & yarn serve",
     "serve": "live-server . --port=3000 --browser=firefox-developer-edition --open=./demo --ignore=.cache,scss,node_modules",
     "css": "node-sass scss/css-grid/index.scss dist/css-grid.css",
-    "css:alt": "node-sass alt-grid/main.scss dist/alt-grid.css",
+    "css:alt": "node-sass scss/alt-flex-grid/main.scss dist/alt-grid.css",
     "css-lint": "stylelint \"**/*.{css,scss}\" --cache --cache-location .cache/.stylelintcache --rd"
   },
   "dependencies": {
